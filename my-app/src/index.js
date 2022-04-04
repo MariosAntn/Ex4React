@@ -5,8 +5,6 @@ import 'tachyons';
 import { robots } from './users';
 import App from './App'
 
-
-
 ReactDOM.render(
   <App robots={robots} />,
   document.getElementById('root'));

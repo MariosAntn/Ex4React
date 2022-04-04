@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Failed to connect to DB: " . $conn->connect_error);
 }
 
-$sql = "SELECT username FROM users";
+$sql = "SELECT id, username FROM user";
 $result = mysqli_query($conn, $sql);
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -21,4 +21,5 @@ if ($result) {
     }
 }
 
-echo json_encode(array('user' => $array));
+header('content-type: application/json');
+echo json_encode($array);

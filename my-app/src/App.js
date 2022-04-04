@@ -18,19 +18,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("./usersdb.php", {
-      method: 'GET',
-      type: 'JSON',
-      body: ('user')
-    }
-    )
+    fetch("users.json")
       .then(response => response.json())
       .then(users => { this.setState({ robots: users }) })
   }
 
   render() {
     const filteredRobots = this.state.robots.filter((robot) => {
-      return robot.name.toLowerCase().includes(this.state.SearchResult.toLowerCase());
+      return robot.username.toLowerCase().includes(this.state.SearchResult.toLowerCase());
     })
     return !robots.length ?
       <h1>Loading</h1> :
