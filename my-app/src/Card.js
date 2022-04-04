@@ -5,7 +5,7 @@ class Card extends Component {
         return (
             <div className="tc bg-light-green dib grow ma2 pa2 shadow-5">
                 <img alt={`${this.props.name}`} src={`https://robohash.org/${this.props.name}${this.props.id}`} />
-                <p>{this.props.name}</p>
+                <h3>{this.props.name}</h3>
                 <p>{this.props.email}</p>
             </div>
         )
