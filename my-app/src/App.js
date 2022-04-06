@@ -2,40 +2,37 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchBox from "./SearchBox";
 import CardList from "./CardList";
-import {robots} from "./users";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      robots: [],
-      SearchResult: ""
+      users: [],
+      SearchUser: ""
     };
   }
 
   onSearchChange = (event) => {
-    this.setState({ SearchResult: event.target.value })
+    this.setState({ SearchUser: event.target.value })
   }
 
   componentDidMount() {
-    fetch("users.json")
+    fetch('http://localhost/Ex4Rreact/my-app/php/RetrieveUsers.php')
       .then(response => response.json())
-      .then(users => { this.setState({ robots: users }) })
+      .then(data => { this.setState({ users: data }) })
   }
 
   render() {
-    const filteredRobots = this.state.robots.filter((robot) => {
-      return robot.username.toLowerCase().includes(this.state.SearchResult.toLowerCase());
-    })
-    return !robots.length ?
-      <h1>Loading</h1> :
-      (
-        <div className="tc">
-        <h1>SearchBox</h1>
+    const filteredUsers = this.state.users.filter((user) => {
+      return user.username.toLowerCase().includes(this.state.SearchUser.toLowerCase())
+    });
+    return (
+      <div className="tc">
+        <h1>IronGym Users SearchBox</h1>
         <SearchBox searchchange={this.onSearchChange} />
-        <CardList robots={filteredRobots} />
+        <CardList users={filteredUsers} />
       </div>
-    );
+    )
   }
 }
 
