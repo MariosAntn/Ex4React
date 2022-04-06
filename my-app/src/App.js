@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost/Ex4Rreact/my-app/php/RetrieveUsers.php')
+    fetch('http://localhost/Ex4React/my-app/php/RetrieveUsers.php')
       .then(response => response.json())
       .then(data => { this.setState({ users: data }) })
   }
